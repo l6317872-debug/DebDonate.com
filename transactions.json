@@ -1,0 +1,14 @@
+[
+  {
+    "description": "เงินสนับสนุนกิจกรรม",
+    "amount": 5000,
+    "type": "income",
+    "date": 1755507600000
+  },
+  {
+    "description": "ซื้ออุปกรณ์กีฬา",
+    "amount": 850.5,
+    "type": "expense",
+    "date": 1755594000000
+  }
+]
