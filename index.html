@@ -23,7 +23,7 @@
         .lang-switcher {
             position: fixed;
             top: 12px;
-            left: 12px;
+            right: 12px;
             z-index: 9999;
         }
 
@@ -57,7 +57,8 @@
         .lang-menu {
             position: absolute;
             top: calc(100% + 8px);
-            left: 0;
+            right: 0;
+            left: auto;
             background: white;
             border: 1px solid rgba(0,0,0,0.08);
             border-radius: 8px;
@@ -410,6 +411,10 @@
             .section-header h2 {
                 font-size: 22px;
             }
+
+            /* ensure language toggle fits on small screens */
+            .lang-switcher { top: 8px; right: 8px; }
+            .lang-menu { min-width: 140px; }
         }
 
     </style>
@@ -437,7 +442,7 @@
         </button>
 
         <div id="langMenu" class="lang-menu" role="menu" aria-hidden="true">
-            <button role="menuitem" data-lang="th" title="ภาษาไท��">
+            <button role="menuitem" data-lang="th" title="ภาษาไทย">
                 <svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect width="60" height="40" fill="#fff"/>
                     <rect width="60" height="8" y="0" fill="#d8102a"/>
@@ -587,7 +592,7 @@
 
                         <th data-i18n="thDate">วันที่</th>
 
-                        <th data-i18n="thList">���ายการ</th>
+                        <th data-i18n="thList">รายการ</th>
 
                         <th data-i18n="thRevenue">รายรับ</th>
 
@@ -701,7 +706,7 @@
             supportTitle: '支持 DebDonate 活动',
             supportDesc: '扫描二维码以支持 DebDonate 的活动和项目。',
             qrAlt: '支持 DebDonate 的二维码',
-            qrWarning: '⚠ 进行交易前请核对收款账���名。',
+            qrWarning: '⚠ 进行交易前请核对收款账户名。',
             sectionSmall: '财务透明度 — DebDonate',
             sectionTitle: '财务条目',
             tableCaption: 'DebDonate 财务条目表',
