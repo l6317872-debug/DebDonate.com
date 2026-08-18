@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DebDonate | ความโปร่งใสทางการเงิน</title>
+    <title data-i18n="title">DebDonate | ความโปร่งใสทางการเงิน</title>
 
     <style>
 
@@ -17,6 +17,31 @@
             background: #f4f4ef;
             color: #171717;
             font-family: Arial, "Noto Sans Thai", sans-serif;
+        }
+
+        /* LANGUAGE SWITCHER */
+        .lang-switcher {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            display: flex;
+            gap: 6px;
+        }
+
+        .lang-switcher button {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .lang-switcher button.active {
+            background: #075c35;
+            color: white;
+            border-color: rgba(0,0,0,0.1);
         }
 
         /* HEADER */
@@ -351,6 +376,11 @@
 
 <body>
 
+<div class="lang-switcher" role="navigation" aria-label="Language switcher">
+    <button data-lang="th" class="active">ไทย</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="zh">中文</button>
+</div>
 
 <header>
 
@@ -359,8 +389,8 @@
         <div class="logo" title="DebDonate logo" aria-hidden="true"></div>
 
         <div>
-            <h1>DebDonate</h1>
-            <p>ความโปร่งใสทางการเงิน</p>
+            <h1 data-i18n="headerTitle">DebDonate</h1>
+            <p data-i18n="headerSubtitle">ความโปร่งใสทางการเงิน</p>
         </div>
 
     </div>
@@ -375,17 +405,11 @@
 
     <section class="balance-card">
 
-        <p class="balance-title">
-            ยอดเงินคงเหลือ
-        </p>
+        <p class="balance-title" data-i18n="balanceTitle">ยอดเงินคงเหลือ</p>
 
-        <h2 id="balance">
-            ฿0.00
-        </h2>
+        <h2 id="balance">฿0.00</h2>
 
-        <p class="realtime">
-            ● ระบบแสดงข้อมูล Real-time
-        </p>
+        <p class="realtime" data-i18n="realtime">● ระบบแสดงข้อมูล Real-time</p>
 
     </section>
 
@@ -397,26 +421,18 @@
 
         <div class="summary-box income-box">
 
-            <p>
-                รายรับทั้งหมด
-            </p>
+            <p data-i18n="totalRevenue">รายรับทั้งหมด</p>
 
-            <h3 id="income">
-                ฿0.00
-            </h3>
+            <h3 id="income">฿0.00</h3>
 
         </div>
 
 
         <div class="summary-box expense-box">
 
-            <p>
-                รายจ่ายทั้งหมด
-            </p>
+            <p data-i18n="totalExpenses">รายจ่ายทั้งหมด</p>
 
-            <h3 id="expense">
-                ฿0.00
-            </h3>
+            <h3 id="expense">฿0.00</h3>
 
         </div>
 
@@ -428,32 +444,21 @@
 
     <section class="qr-section">
 
-        <p class="small-title" style="color:#fff3b0;">
-            สนับสนุน DebDonate
-        </p>
+        <p class="small-title" style="color:#fff3b0;" data-i18n="supportSmall">สนับสนุน DebDonate</p>
 
-        <h2>
-            สนับสนุนกิจกรรมของ DebDonate
-        </h2>
+        <h2 data-i18n="supportTitle">สนับสนุนกิจกรรมของ DebDonate</h2>
 
-        <p class="qr-description">
-            สแกน QR Code เพื่อสนับสนุนกิจกรรมและโครงการของ DebDonate
-        </p>
+        <p class="qr-description" data-i18n="supportDesc">สแกน QR Code เพื่อสนับสนุนกิจกรรมและโครงการของ DebDonate</p>
 
 
         <div class="qr-box">
 
-            <img
-                src="qr-code.png"
-                alt="คิวอาร์โค้ดสำหรับสนับสนุน DebDonate"
-            >
+            <img src="qr-code.png" alt="คิวอาร์โค้ดสำหรับสนับสนุน DebDonate" id="qrImage">
 
         </div>
 
 
-        <p class="qr-warning">
-            ⚠ กรุณาตรวจสอบชื่อบัญชีก่อนทำรายการ
-        </p>
+        <p class="qr-warning" data-i18n="qrWarning">⚠ กรุณาตรวจสอบชื่อบัญชีก่อนทำรายการ</p>
 
     </section>
 
@@ -467,19 +472,13 @@
 
             <div>
 
-                <p class="small-title">
-                    ความโปร่งใสทางการเงิน — DebDonate
-                </p>
+                <p class="small-title" data-i18n="sectionSmall">ความโปร่งใสทางการเงิน — DebDonate</p>
 
-                <h2>
-                    รายการทางการเงิน
-                </h2>
+                <h2 data-i18n="sectionTitle">รายการทางการเงิน</h2>
 
             </div>
 
-            <span id="updateTime" aria-live="polite">
-                กำลังโหลด...
-            </span>
+            <span id="updateTime" aria-live="polite">กำลังโหลด...</span>
 
         </div>
 
@@ -488,21 +487,21 @@
 
             <table>
 
-                <caption class="visually-hidden">ตารางรายการทางการเงินของ DebDonate</caption>
+                <caption class="visually-hidden" data-i18n="tableCaption">ตารางรายการทางการเงินของ DebDonate</caption>
 
                 <thead>
 
                     <tr>
 
-                        <th>วันที่</th>
+                        <th data-i18n="thDate">วันที่</th>
 
-                        <th>รายการ</th>
+                        <th data-i18n="thList">รายการ</th>
 
-                        <th>รายรับ</th>
+                        <th data-i18n="thRevenue">รายรับ</th>
 
-                        <th>รายจ่าย</th>
+                        <th data-i18n="thExpenses">รายจ่าย</th>
 
-                        <th>คงเหลือ</th>
+                        <th data-i18n="thRemaining">คงเหลือ</th>
 
                     </tr>
 
@@ -512,12 +511,7 @@
                 <tbody id="transactions">
 
                     <tr>
-                        <td
-                            colspan="5"
-                            class="empty"
-                        >
-                            กำลังโหลดข้อมูล...
-                        </td>
+                        <td colspan="5" class="empty" data-i18n="loading">กำลังโหลดข้อมูล...</td>
                     </tr>
 
                 </tbody>
@@ -534,13 +528,9 @@
 
 <footer>
 
-    <p>
-        ระบบเผยแพร่ข้อมูลเพื่อความโปร่งใสทางการเงิน
-    </p>
+    <p data-i18n="infoFooter">ระบบเผยแพร่ข้อมูลเพื่อความโปร่งใสทางการเงิน</p>
 
-    <p>
-        DebDonate
-    </p>
+    <p data-i18n="footerName">DebDonate</p>
 
 </footer>
 
@@ -551,6 +541,124 @@
 <script type="module">
 
 (async () => {
+
+    const translations = {
+        th: {
+            title: 'DebDonate | ความโปร่งใสทางการเงิน',
+            headerTitle: 'DebDonate',
+            headerSubtitle: 'ความโปร่งใสทางการเงิน',
+            balanceTitle: 'ยอดเงินคงเหลือ',
+            realtime: '● ระบบแสดงข้อมูล Real-time',
+            totalRevenue: 'รายรับทั้งหมด',
+            totalExpenses: 'รายจ่ายทั้งหมด',
+            supportSmall: 'สนับสนุน DebDonate',
+            supportTitle: 'สนับสนุนกิจกรรมของ DebDonate',
+            supportDesc: 'สแกน QR Code เพื่อสนับสนุนกิจกรรมและโครงการของ DebDonate',
+            qrAlt: 'คิวอาร์โค้ดสำหรับสนับสนุน DebDonate',
+            qrWarning: '⚠ กรุณาตรวจสอบชื่อบัญชีก่อนทำรายการ',
+            sectionSmall: 'ความโปร่งใสทางการเงิน — DebDonate',
+            sectionTitle: 'รายการทางการเงิน',
+            tableCaption: 'ตารางรายการทาง���ารเงินของ DebDonate',
+            thDate: 'วันที่',
+            thList: 'รายการ',
+            thRevenue: 'รายรับ',
+            thExpenses: 'รายจ่าย',
+            thRemaining: 'คงเหลือ',
+            loading: 'กำลังโหลดข้อมูล...',
+            noData: 'ยังไม่มีรายการทางการเงิน',
+            infoFooter: 'ระบบเผยแพร่ข้อมูลเพื่อความโปร่งใสทางการเงิน',
+            footerName: 'DebDonate',
+            updatedPrefix: 'อัปเดตล่าสุด '
+        },
+        en: {
+            title: 'DebDonate | Financial Transparency',
+            headerTitle: 'DebDonate',
+            headerSubtitle: 'Financial Transparency',
+            balanceTitle: 'Balance',
+            realtime: '● Real-time data display',
+            totalRevenue: 'Total Revenue',
+            totalExpenses: 'Total Expenses',
+            supportSmall: 'SUPPORT DebDonate',
+            supportTitle: 'Supporting DebDonate Activities',
+            supportDesc: 'Scan the QR Code to support DebDonate events and projects.',
+            qrAlt: 'QR code to support DebDonate',
+            qrWarning: '⚠ Please check your account name before making a transaction.',
+            sectionSmall: 'Financial Transparency — DebDonate',
+            sectionTitle: 'Financial Items',
+            tableCaption: 'DebDonate Financial Entry Table',
+            thDate: 'Date',
+            thList: 'List',
+            thRevenue: 'Revenue',
+            thExpenses: 'Expenses',
+            thRemaining: 'Remaining',
+            loading: 'Loading data...',
+            noData: 'No financial transactions',
+            infoFooter: 'Information Dissemination System for Financial Transparency',
+            footerName: 'DebDonate',
+            updatedPrefix: 'Updated '
+        },
+        zh: {
+            title: 'DebDonate | 财务透明度',
+            headerTitle: 'DebDonate',
+            headerSubtitle: '财务透明度',
+            balanceTitle: '余额',
+            realtime: '● 实时数据显示',
+            totalRevenue: '收入总额',
+            totalExpenses: '支出总额',
+            supportSmall: '支持 DebDonate',
+            supportTitle: '支持 DebDonate 活动',
+            supportDesc: '扫描二维码以支持 DebDonate 的活动和项目。',
+            qrAlt: '支持 DebDonate 的二维码',
+            qrWarning: '⚠ 进行交易前请核对收款账户名。',
+            sectionSmall: '财务透明度 — DebDonate',
+            sectionTitle: '财务条目',
+            tableCaption: 'DebDonate 财务条目表',
+            thDate: '日期',
+            thList: '项目',
+            thRevenue: '收入',
+            thExpenses: '支出',
+            thRemaining: '余额',
+            loading: '正在加载数据...',
+            noData: '暂无财务记录',
+            infoFooter: '财务透明度信息发布系统',
+            footerName: 'DebDonate',
+            updatedPrefix: '已更新 '
+        }
+    };
+
+    let currentLang = 'th';
+
+    const localeMap = { th: 'th-TH', en: 'en-US', zh: 'zh-CN' };
+
+    function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+
+        // update active button
+        document.querySelectorAll('.lang-switcher button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // Set page title
+        document.title = translations[lang].title;
+
+        // Replace all elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key] !== undefined) {
+                el.textContent = translations[lang][key];
+            }
+        });
+
+        // Update QR alt
+        const qr = document.getElementById('qrImage');
+        if (qr) qr.alt = translations[lang].qrAlt || qr.alt;
+
+        // Re-render numbers/dates if already loaded
+        if (window._lastRenderedTransactions) {
+            renderFromArray(window._lastRenderedTransactions);
+        }
+    }
 
     // Minimal Firebase config placeholder. If you replace the values with your
     // project's config, the page will use Firestore realtime updates.
@@ -579,6 +687,9 @@
 
     // Common renderer: accepts an array of items with { date, amount, type, description }
     function renderFromArray(items) {
+        // store last rendered for re-render when language changes
+        window._lastRenderedTransactions = items;
+
         // Normalize: sort oldest -> newest
         const chronological = [...items].sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -602,7 +713,13 @@
         table.innerHTML = "";
 
         if (chronological.length === 0) {
-            table.innerHTML = `\n                <tr>\n                    <td colspan="5" class="empty">ยังไม่มีรายการทางการเงิน</td>\n                </tr>\n            `;
+            const row = document.createElement('tr');
+            const td = document.createElement('td');
+            td.colSpan = 5;
+            td.className = 'empty';
+            td.textContent = translations[currentLang].noData;
+            row.appendChild(td);
+            table.appendChild(row);
         } else {
             // Show newest first
             chronological.reverse().forEach((item) => {
@@ -613,9 +730,9 @@
                 let expenseHTML = "—";
 
                 if (item.type === "income") {
-                    incomeHTML = `<span class=\"income\">+ ฿${formatNumber(amount)}</span>`;
+                    incomeHTML = `<span class="income">+ ${formatCurrency(amount)}</span>`;
                 } else if (item.type === "expense") {
-                    expenseHTML = `<span class=\"expense\">- ฿${formatNumber(amount)}</span>`;
+                    expenseHTML = `<span class="expense">- ${formatCurrency(amount)}</span>`;
                 }
 
                 row.innerHTML = `
@@ -623,38 +740,64 @@
                     <td class="description">${escapeHTML(item.description)}</td>
                     <td>${incomeHTML}</td>
                     <td>${expenseHTML}</td>
-                    <td>฿${formatNumber(item.runningBalance)}</td>
+                    <td>${formatCurrency(item.runningBalance)}</td>
                 `;
 
                 table.appendChild(row);
             });
         }
 
-        balanceElement.textContent = "฿" + formatNumber(totalIncome - totalExpense);
-        incomeElement.textContent = "฿" + formatNumber(totalIncome);
-        expenseElement.textContent = "฿" + formatNumber(totalExpense);
-        updateTime.textContent = "อัปเดตล่าสุด " + new Date().toLocaleTimeString("th-TH");
+        balanceElement.textContent = formatCurrency(totalIncome - totalExpense);
+        incomeElement.textContent = formatCurrency(totalIncome);
+        expenseElement.textContent = formatCurrency(totalExpense);
+        updateTime.textContent = translations[currentLang].updatedPrefix + new Date().toLocaleTimeString(localeMap[currentLang]);
     }
 
     // Fallback local data loader
     async function loadLocalData() {
         try {
-            updateTime.textContent = "โหลดข้อมูลจากเครื่อง...";
+            updateTime.textContent = translations[currentLang].loading;
             const res = await fetch('transactions.json');
             if (!res.ok) throw new Error('ไม่พบ transactions.json');
             const data = await res.json();
             renderFromArray(data);
         } catch (err) {
             console.error(err);
-            updateTime.textContent = "ไม่สามารถโหลดข้อมูลได้";
-            table.innerHTML = `\n            <tr>\n                <td colspan=\"5\" class=\"empty\">ไม่สามารถเชื่อมต่อฐานข้อมูลได้</td>\n            </tr>\n            `;
+            updateTime.textContent = translations[currentLang].loading;
+            table.innerHTML = `\n            <tr>\n                <td colspan=\"5\" class=\"empty\">${translations[currentLang].noData}</td>\n            </tr>\n            `;
         }
+    }
+
+    function formatCurrency(number) {
+        const locale = localeMap[currentLang] || 'th-TH';
+        // Use currency THB symbol for all locales; format number accordingly
+        const formatted = Number(number).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        // Place currency symbol depending on locale
+        if (currentLang === 'en') return '฿' + formatted;
+        if (currentLang === 'zh') return '฿' + formatted;
+        return '฿' + formatted;
+    }
+
+    function formatDate(timestamp) {
+        const date = timestamp?.toDate ? timestamp.toDate() : new Date(String(timestamp));
+        if (isNaN(date)) return '-';
+        const locale = localeMap[currentLang] || 'th-TH';
+        return date.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
+    function escapeHTML(text) {
+        return String(text || '-')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
     }
 
     if (!isPlaceholder(firebaseConfig)) {
         // Use Firebase realtime Firestore
         try {
-            updateTime.textContent = "เชื่อมต่อ Firebase...";
+            updateTime.textContent = translations[currentLang].loading;
             const { initializeApp } = await import('https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js');
             const firestore = await import('https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js');
 
@@ -676,8 +819,8 @@
                 renderFromArray(normalized);
             }, (error) => {
                 console.error(error);
-                updateTime.textContent = 'ไม่สามารถโหลดข้อมูลได้';
-                table.innerHTML = `\n                <tr>\n                    <td colspan=\"5\" class=\"empty\">ไม่สามารถเชื่อมต่อฐานข้อมูลได้</td>\n                </tr>\n                `;
+                updateTime.textContent = translations[currentLang].loading;
+                table.innerHTML = `\n                <tr>\n                    <td colspan=\"5\" class=\"empty\">${translations[currentLang].noData}</td>\n                </tr>\n                `;
             });
 
             // Clean up on unload
@@ -694,25 +837,13 @@
         await loadLocalData();
     }
 
-    /* Utility functions */
-    function formatNumber(number) {
-        return Number(number).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
+    // Setup language switcher events
+    document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
 
-    function formatDate(timestamp) {
-        const date = timestamp?.toDate ? timestamp.toDate() : new Date(String(timestamp));
-        if (isNaN(date)) return '-';
-        return date.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    }
-
-    function escapeHTML(text) {
-        return String(text || '-')
-            .replaceAll('&', '&amp;')
-            .replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;')
-            .replaceAll('"', '&quot;')
-            .replaceAll("'", '&#039;');
-    }
+    // Initialize language
+    setLanguage(currentLang);
 
 })();
 
