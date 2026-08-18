@@ -19,30 +19,72 @@
             font-family: Arial, "Noto Sans Thai", sans-serif;
         }
 
-        /* LANGUAGE SWITCHER */
+        /* LANGUAGE SWITCHER (single button + menu) */
         .lang-switcher {
             position: fixed;
-            top: 10px;
-            left: 10px;
+            top: 12px;
+            left: 12px;
             z-index: 9999;
-            display: flex;
-            gap: 6px;
         }
 
-        .lang-switcher button {
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #ddd;
-            padding: 6px 8px;
+        .lang-dropdown {
+            position: relative;
+        }
+
+        .lang-toggle {
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 6px 10px;
             font-size: 13px;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            min-width: 78px;
         }
 
-        .lang-switcher button.active {
-            background: #075c35;
+        .lang-toggle .flag { width: 18px; height: 12px; flex: 0 0 auto; }
+        .lang-toggle .caret { width: 10px; height: 10px; opacity: .8; }
+
+        .lang-toggle.active {
+            background: linear-gradient(90deg,#075c35 0%,#8fbf2b 50%);
             color: white;
-            border-color: rgba(0,0,0,0.1);
+            border-color: rgba(0,0,0,0.12);
         }
+
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            padding: 6px;
+            display: none;
+            min-width: 160px;
+        }
+
+        .lang-menu.show { display: block; }
+
+        .lang-menu button {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            padding: 6px 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .lang-menu button:hover { background: #f4f4ef; }
+
 
         /* HEADER */
 
@@ -377,9 +419,59 @@
 <body>
 
 <div class="lang-switcher" role="navigation" aria-label="Language switcher">
-    <button data-lang="th" class="active">ไทย</button>
-    <button data-lang="en">EN</button>
-    <button data-lang="zh">中文</button>
+    <div class="lang-dropdown">
+        <button id="langToggle" class="lang-toggle" aria-haspopup="true" aria-expanded="false" title="Change language">
+            <!-- default flag (Thailand) -->
+            <svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="60" height="40" fill="#fff"/>
+                <rect width="60" height="8" y="0" fill="#d8102a"/>
+                <rect width="60" height="8" y="8" fill="#ffffff"/>
+                <rect width="60" height="16" y="16" fill="#0a4b8c"/>
+                <rect width="60" height="8" y="32" fill="#ffffff"/>
+                <rect width="60" height="8" y="32" fill="#d8102a"/>
+            </svg>
+            <span id="currentLangLabel">ไทย</span>
+            <svg class="caret" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <div id="langMenu" class="lang-menu" role="menu" aria-hidden="true">
+            <button role="menuitem" data-lang="th" title="ภาษาไท��">
+                <svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="60" height="40" fill="#fff"/>
+                    <rect width="60" height="8" y="0" fill="#d8102a"/>
+                    <rect width="60" height="8" y="8" fill="#ffffff"/>
+                    <rect width="60" height="16" y="16" fill="#0a4b8c"/>
+                    <rect width="60" height="8" y="32" fill="#ffffff"/>
+                    <rect width="60" height="8" y="32" fill="#d8102a"/>
+                </svg>
+                ไทย
+            </button>
+            <button role="menuitem" data-lang="en" title="English">
+                <svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="60" height="40" fill="#b22234"/>
+                    <g fill="#fff">
+                        <rect y="4" width="60" height="4" />
+                        <rect y="12" width="60" height="4" />
+                        <rect y="20" width="60" height="4" />
+                        <rect y="28" width="60" height="4" />
+                    </g>
+                    <rect width="26" height="16" fill="#3c64a0"/>
+                </svg>
+                EN
+            </button>
+            <button role="menuitem" data-lang="zh" title="中文">
+                <svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="60" height="40" fill="#de2910"/>
+                    <g fill="#ffde00" transform="scale(0.9)">
+                        <polygon points="5,5 7,9 11,9 8,11 9,15 5,12 1,15 2,11 -1,9 3,9" transform="translate(3,2)"/>
+                    </g>
+                </svg>
+                中文
+            </button>
+        </div>
+    </div>
 </div>
 
 <header>
@@ -495,7 +587,7 @@
 
                         <th data-i18n="thDate">วันที่</th>
 
-                        <th data-i18n="thList">รายการ</th>
+                        <th data-i18n="thList">���ายการ</th>
 
                         <th data-i18n="thRevenue">รายรับ</th>
 
@@ -558,7 +650,7 @@
             qrWarning: '⚠ กรุณาตรวจสอบชื่อบัญชีก่อนทำรายการ',
             sectionSmall: 'ความโปร่งใสทางการเงิน — DebDonate',
             sectionTitle: 'รายการทางการเงิน',
-            tableCaption: 'ตารางรายการทาง���ารเงินของ DebDonate',
+            tableCaption: 'ตารางรายการทางการเงินของ DebDonate',
             thDate: 'วันที่',
             thList: 'รายการ',
             thRevenue: 'รายรับ',
@@ -609,7 +701,7 @@
             supportTitle: '支持 DebDonate 活动',
             supportDesc: '扫描二维码以支持 DebDonate 的活动和项目。',
             qrAlt: '支持 DebDonate 的二维码',
-            qrWarning: '⚠ 进行交易前请核对收款账户名。',
+            qrWarning: '⚠ 进行交易前请核对收款账���名。',
             sectionSmall: '财务透明度 — DebDonate',
             sectionTitle: '财务条目',
             tableCaption: 'DebDonate 财务条目表',
@@ -626,18 +718,22 @@
         }
     };
 
-    let currentLang = 'th';
+    // load saved language if present
+    let currentLang = localStorage.getItem('debdonate_lang') || 'th';
 
     const localeMap = { th: 'th-TH', en: 'en-US', zh: 'zh-CN' };
 
     function setLanguage(lang) {
         if (!translations[lang]) return;
         currentLang = lang;
+        localStorage.setItem('debdonate_lang', lang);
 
-        // update active button
-        document.querySelectorAll('.lang-switcher button').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
+        // update toggle label + flag
+        const label = document.getElementById('currentLangLabel');
+        const toggle = document.getElementById('langToggle');
+        if (label) label.textContent = (lang === 'th' ? 'ไทย' : lang === 'en' ? 'EN' : '中文');
+        // mark active style
+        if (toggle) toggle.classList.toggle('active', true);
 
         // Set page title
         document.title = translations[lang].title;
@@ -770,11 +866,7 @@
 
     function formatCurrency(number) {
         const locale = localeMap[currentLang] || 'th-TH';
-        // Use currency THB symbol for all locales; format number accordingly
         const formatted = Number(number).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        // Place currency symbol depending on locale
-        if (currentLang === 'en') return '฿' + formatted;
-        if (currentLang === 'zh') return '฿' + formatted;
         return '฿' + formatted;
     }
 
@@ -837,12 +929,42 @@
         await loadLocalData();
     }
 
-    // Setup language switcher events
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    // Language UI: toggle menu, selection
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+
+    function openMenu() {
+        langMenu.classList.add('show');
+        langMenu.setAttribute('aria-hidden', 'false');
+        langToggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+        langMenu.classList.remove('show');
+        langMenu.setAttribute('aria-hidden', 'true');
+        langToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (langMenu.classList.contains('show')) closeMenu(); else openMenu();
     });
 
-    // Initialize language
+    // select language from menu
+    langMenu.querySelectorAll('button[data-lang]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = btn.dataset.lang;
+            setLanguage(lang);
+            closeMenu();
+        });
+    });
+
+    // close on outside click / escape
+    document.addEventListener('click', (e) => {
+        if (!langMenu.contains(e.target) && !langToggle.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+    // Initialize language UI and content
     setLanguage(currentLang);
 
 })();
