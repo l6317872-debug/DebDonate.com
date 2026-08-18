@@ -22,7 +22,8 @@
         /* HEADER */
 
         header {
-            background: #075c35;
+            /* gradient: green -> yellow */
+            background: linear-gradient(90deg, #075c35 0%, #8fbf2b 50%, #f4d900 100%);
             color: white;
             border-bottom: 7px solid #f4d900;
             padding: 18px 6%;
@@ -39,12 +40,14 @@
         .logo {
             width: 50px;
             height: 50px;
-            background: #f4d900;
+            background: linear-gradient(135deg, #f4d900 0%, #075c35 100%);
             color: #075c35;
             display: grid;
             place-items: center;
             font-weight: 900;
             font-size: 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 0 rgba(0,0,0,0.15) inset;
         }
 
         header h1 {
@@ -54,7 +57,7 @@
 
         header p {
             margin: 3px 0 0;
-            opacity: .8;
+            opacity: .95;
             font-size: 14px;
         }
 
@@ -71,7 +74,8 @@
         /* BALANCE */
 
         .balance-card {
-            background: #075c35;
+            /* gradient matching header but darker */
+            background: linear-gradient(90deg, #074a2b 0%, #9ecd2e 50%, #f4d900 100%);
             color: white;
             padding: 45px 25px;
             text-align: center;
@@ -145,7 +149,8 @@
 
         .qr-section {
             margin: 35px 0;
-            background: #075c35;
+            /* soft gradient for QR section */
+            background: linear-gradient(90deg, #075c35 0%, #b7d84a 50%, #f4d900 100%);
             color: white;
             border: 3px solid #171717;
             box-shadow: 7px 7px 0 #f4d900;
@@ -181,7 +186,7 @@
         .qr-warning {
             margin-top: 18px;
             font-size: 13px;
-            color: #f4d900;
+            color: #fff3b0;
         }
 
 
@@ -231,7 +236,7 @@
         }
 
         thead {
-            background: #075c35;
+            background: linear-gradient(90deg, #075c35 0%, #f4d900 100%);
             color: white;
         }
 
@@ -423,7 +428,7 @@
 
     <section class="qr-section">
 
-        <p class="small-title" style="color:#f4d900;">
+        <p class="small-title" style="color:#fff3b0;">
             สนับสนุน DebDonate
         </p>
 
