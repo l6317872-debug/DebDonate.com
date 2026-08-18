@@ -556,12 +556,12 @@
     // from transactions.json so the site "just runs" without Firebase.
 
     const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.firebasestorage.app",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID"
+        apiKey: "AIza...",
+        authDomain: "student-council.firebaseapp.com",
+        projectId: "student-council",
+        storageBucket: "student-council.firebasestorage.app",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef"
     };
 
     const table = document.getElementById("transactions");
@@ -675,7 +675,7 @@
             }, (error) => {
                 console.error(error);
                 updateTime.textContent = 'ไม่สามารถโหลดข้อมูลได้';
-                table.innerHTML = `\n                <tr>\n                    <td colspan=\"5\" class=\"empty\">ไม่สามารถเชื่อมต่อฐานข้อมูลได้</td>\n                </tr>\n                `;
+                table.innerHTML = `\n                <tr>\n                    <td colspan="5" class="empty">ไม่สามารถเชื่อมต่อฐานข้อมูลได้</td>\n                </tr>\n                `;
             });
 
             // Clean up on unload
